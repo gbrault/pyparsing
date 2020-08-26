@@ -7,6 +7,7 @@
 #
 print("Importing pyparsing...")
 from pyparsing import *
+import pprint
 
 print("Constructing EBNF parser with pyparsing...")
 import ebnf
@@ -73,3 +74,13 @@ print("],\n".join(str(parsed_chars.asList()).split("],")))
 # ~ assert parsed_char_len == grammar_length
 
 print("Ok!")
+
+f = open("sketcher.ebnf","r")
+sketcher = f.read()
+f.close()
+
+parsed_sketcher = ebnf_parser.parseString(sketcher)
+
+pprint.pprint(parsed_sketcher)
+
+
